@@ -16,4 +16,11 @@ listing: posts
 
 # Bio
 
-Hola! Soy economista con experiencia en banca central y banca privada en Nicaragua. Disfruto realizando análisis macroeconómicos y escribiendo códigos en R. Mi tiempo libre lo dedico a mi esposa y mi hijo, y a enseñar econometría y matemáticas en pregrado.   
+Hola bienvenido a EconoNICs! Soy economista con experiencia en banca central y banca privada en Nicaragua. Disfruto leyendo e investigando la macroeconomía, escribiendo códigos en R y enseñando. 
+
+En este espacio estaré compartiendo mi visión acerca de la macroeconomía, principalmente de Nicaragua y el mundo.
+
+Aquí puedes ver las publicaciones más recientes en el blog:
+
+
+
