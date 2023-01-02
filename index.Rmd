@@ -1,5 +1,5 @@
 ---
-title: "EconoNICs"
+title: "EconoNICs: Análisis económicos y financieros de Nicaragua y el mundo"
 site: distill::distill_website
 listing: posts
 ---
