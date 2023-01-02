@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this blog",
+      "description": "Some additional details about the blog",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-01-02T06:43:22-06:00"
+    },
+    {
+      "path": "index.html",
+      "title": "EconoNICs",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-01-02T06:43:23-06:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}
