@@ -1,12 +1,19 @@
 ---
-title: "EconoNICs"
-image: my_picture.png
-links: 
-- label: LinkedIn
-url: "https://www.linkedin.com/in/william-mendieta-alvarado-64619197/"
-
+title: "EconoNICs by <br> William Mendieta<br>"
+image: foto_blog.JPG
+links:
+  - label: '<i class="fab fa-twitter"></i> Twitter'
+    url: "https://twitter.com/WMendieta"
+  - label: '<i class="fab fa-linkedin"></i> LinkedIn'
+    url: "https://www.linkedin.com/in/william-mendieta-alvarado-64619197/"
+  - label: '<i class="fas fa-envelope"></i> Email'
+    url: "mailto:wmendieta89@gmail.com"    
 output:
   postcards::trestles
 site: distill::distill_website
 listing: posts
 ---
+
+# Bio
+
+Hola! Soy economista con experiencia en banca central y banca privada en Nicaragua. Disfruto realizando análisis macroeconómicos y escribiendo códigos en R. Mi tiempo libre lo dedico a mi esposa y mi hijo, y a enseñar econometría y matemáticas en pregrado.   
