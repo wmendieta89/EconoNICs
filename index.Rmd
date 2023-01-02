@@ -1,5 +1,12 @@
 ---
-title: "EconoNICs: Análisis económicos y financieros de Nicaragua y el mundo"
+title: "EconoNICs"
+image: my_picture.png
+links: 
+- label: LinkedIn
+url: "https://www.linkedin.com/in/william-mendieta-alvarado-64619197/"
+
+output:
+  postcards::trestles
 site: distill::distill_website
 listing: posts
 ---
