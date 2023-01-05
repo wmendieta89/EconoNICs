@@ -3,6 +3,8 @@ title: "EconoNICs"
 description: |
   EconoNICs
 output_dir: "_site"
+logo: 
+  image: \images\LOGO.png
 navbar:
   right:
     - text: "Home"

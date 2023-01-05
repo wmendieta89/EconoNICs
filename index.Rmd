@@ -18,9 +18,7 @@ listing: posts
 
 Hola bienvenido a EconoNICs! Soy economista con experiencia en banca central y banca privada en Nicaragua. Disfruto leyendo e investigando la macroeconomía, escribiendo códigos en R y enseñando. 
 
-En este espacio estaré compartiendo mi visión acerca de la macroeconomía, principalmente de Nicaragua y el mundo.
-
-Aquí puedes ver las publicaciones más recientes en el blog:
+En este espacio estaré compartiendo mi visión y análisis acerca de la macroeconomía, principalmente de Nicaragua y en ocasiones del resto del mundo.
 
 
 
