@@ -1,6 +1,6 @@
 ---
-title: "EconoNICs by <br> William Mendieta<br>"
-image: foto_blog.JPG
+title: "William Mendieta"
+image: LOGO2.png
 links:
   - label: '<i class="fab fa-twitter"></i> Twitter'
     url: "https://twitter.com/WMendieta"
