@@ -1,26 +1,28 @@
 ---
-title: "Welcome to EconoNICs"
+title: "Bienvenidos a EconoNICs"
 description: |
-  Welcome to our new blog, EconoNICs. We hope you enjoy 
-  reading what we have to say!
+  Bienvenidos a EconoNICs. Este es un blog dedicado a analizar la economía Nicaragüense y su interacciones con el resto del mundo.
 author:
   - name: William Alberto Mendieta Alvarado 
-    url: https://example.com/norajones
-    affiliation: Spacely Sprockets
-    affiliation_url: https://example.com/spacelysprokets
-date: 01-02-2023
-output:
-  distill::distill_article:
-    self_contained: false
+    url: https://econonics.netlify.app/
+date: 2023-01-08
+output: distill::distill_article
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
-# Learn more about creating blogs with Distill at:
-# https://rstudio.github.io/distill/blog.html
-
 ```
 
+Hola! Bienvenido a EconoNICs. Este es mi debut como blogger, y estoy muy emocionado por compartir y debatir con vos acerca de la economía Nicaragüense. 
 
+Este es un blog dedicado a analizar la economía Nicaragüense y, en ocasiones, del resto del mundo. Si sos un estudiante, un trabajador, un empresario, seguir este blog será de gran utilidad. 
+
+Con este blog quiero aportarte valor, para que estés al tanto de los eventos económicos de Nicaragua y que tengas claridad en cómo dichos eventos pueden afectar tu vida.
+
+Esto es importante para vos, ya que sin importar el rol que tengas en la sociedad, el saber de economía es una pieza importante para tomar *buenas* decisiones. El análisis económico es pieza clave en cualquier análisis del entorno!
+
+Espero que disfrutes de los artículos y que sean enriquecedores para tu aprendizaje!
+
+Bienvenido a econoNICs!
 
