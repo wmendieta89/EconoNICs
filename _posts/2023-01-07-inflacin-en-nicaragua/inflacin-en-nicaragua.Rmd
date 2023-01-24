@@ -1,0 +1,192 @@
+---
+title: "Inflación en Nicaragua"
+description: |
+  Acerca de la evolución reciente de la inflación de Nicaragua, las políticas económicas para combartirla y sus perspectivas
+author:
+  - name: William Mendieta A.
+    url: https://econonics.netlify.app/
+date: 2023-01-22
+css: cuerpo.css
+output: distill::distill_article
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+pacman::p_load(tidyverse, timetk, janitor, lubridate, tsibble, plotly)
+
+path <- "C:/Users/William Mendieta/Dropbox/Proyectos/Blog/EconoNICs/_posts/2023-01-07-inflacin-en-nicaragua/"
+blog_post <- "datos_macro.RData"
+
+load(paste0(path, blog_post))
+
+ipc_data <- datos_macro %>% 
+  filter(tipo=="consumidor") %>% 
+  select(fecha, name, value)
+
+inflation_data <- ipc_data %>% 
+  group_by(name) %>% 
+  mutate(value = value / lag(value, 12)*100-100) %>% 
+  drop_na(value) %>% 
+  ungroup()
+
+max_pi_before_covid <- inflation_data %>% filter(year(fecha)<2021, name == "ipc") %>% 
+  mutate(max_value = max(value), 
+         fecha_max = if_else(value == max_value, fecha, NA_Date_)) %>% drop_na
+
+gr1 <- ggplotly(inflation_data %>% 
+  filter(name == "ipc") %>% 
+  mutate(`Inflación interanual` = value %>% round(2))  %>%
+    left_join(max_pi_before_covid, by = "fecha") %>%
+    mutate(`Inflación máxima antes del COVID` = max_value %>% round(2)) %>% 
+  ggplot(aes(x = fecha, y = `Inflación interanual`))+
+  geom_line(colour = "#205375", linewidth = 0.75)+
+  geom_smooth(se = F, colour = "#F66B0E", linewidth = 0.5)+
+  geom_point(aes(x = fecha, y = `Inflación máxima antes del COVID`), colour = "red")+
+  theme_bw()+
+  labs(title = "Tasa de inflación interanual de Nicaragua", x="", y="")
+) %>% 
+  layout(annotations = list(x = 0, y = -0.2, 
+                            text = "Fuente: INIDE.",
+                            size = 2,
+                            showarrow = F, 
+                            xref = "paper", 
+                            yref = "paper"))
+  
+gr1  
+
+  
+```
+
+# Evolución reciente de la inflación
+
+Hola a todos! Bienvenidos a EconoNICs. 
+
+En los últimos 12 meses, la inflación en Nicaragua ha aumentado significativamente. De acuerdo a las estadísticas publicadas por el [INIDE](https://www.inide.gob.ni/Home/ipc), la inflación interanual fue 11.38% al cierre de 2022. Es la primera vez, desde el 2008 que el país registra inflaciones interanuales de dos dígitos a lo largo de casi todo un año, por lo que es una situación inusual en más de 10 años de historia económica. 
+
+En el siguiente gráfico puedes apreciar cómo se ha comportado la inflación desde el año 2021 (línea azul) y la tendencia que exhibe (naranja). Si bien la tendencia ^[La tendencia fue estimada usando el método LOESS] señaliza mayores tasas de inflación, es muy probable que ésta en realidad haya tocado un techo. 
+
+```{r grafico_1}
+gr1
+```
+
+En esta línea, [el FMI indicó en octubre](https://www.imf.org/en/Publications/WEO/weo-database/2022/October/weo-report?c=278,&s=PCPIPCH,&sy=2020&ey=2027&ssm=0&scsm=1&scc=0&ssd=1&ssc=0&sic=0&sort=country&ds=.&br=1), en su informe de perspectivas económicas mundiales, que la inflación de Nicaragua permanecería alta a lo largo de 2023, pero que las presiones se aminorarían. Por tal motivo, se pueden esperar tasas de inflación de un dígito para 2023.
+
+# La inflación es trending topic mundial
+
+Históricamente, dado que la inflación impacta directamente en la calidad de vida de las personas, ha sido una variable sujeta a un fuerte escrutinio público. Y por tal motivo, es una preocupación de política económica de primer nivel para los bancos centrales del mundo.
+
+El fenómeno inflacionario que vive Nicaragua, es en realidad una condición global. Para muestra, un botón. Si revisamos las estadísticas de inflación de la región centroamericana, podrán ver que todos los países registran inflaciones elevadas, comparadas con su historia reciente. 
+
+```{r grafico_2}
+
+inflacion_capard <- readxl::read_excel(paste0(path, "inflacion_capard.xlsx"))
+
+ggplotly(inflacion_capard %>% 
+  pivot_longer(-VARIABLE) %>%
+  pivot_wider(names_from = VARIABLE, values_from = value) %>% 
+  clean_names() %>%
+  rename(País = name) %>% 
+  mutate(
+    `Inflación promedio en 2022` = promedio_2022 %>% round(2), 
+    `Inflación promedio 2012 - 2022` = promedio_2012_2021 %>% round(2)
+  ) %>% 
+  ggplot()+
+  geom_col(aes(x = País, y = `Inflación promedio en 2022`), position = "identity", fill = "#205375")+
+  geom_point(aes(x = País, y = `Inflación promedio 2012 - 2022`), colour = "#F66B0E", size = "2.5")+
+    theme_bw()+
+    labs(title = "Inflación en Centroamérica, República Dominicana y Panamá",y= "", x="")
+  )
+
+
+
+```
+
+Gran parte de los bancos centrales del mundo están usando todos los instrumentos que tienen a su disposición para reducir las presiones inflacionarias. Dentro de estos instrumentos están las tasas de política monetaria, las cuales han aumentado de forma agresiva en el último año.
+
+Es importante destacar que toda medida para reducir la inflación tiene costos. En este caso, aquellas economías que tienen una política monetaria (relativamente) independiente han ejecutado incrementos de tasas de interés. Esto en última instancia generará una contracción de demanda agregada o, en el mejor de los casos, una desaceleración del crecimiento económico.
+
+# ¿Nicaragua realiza acciones de política monetaria?
+
+En el caso de Nicaragua, toda acción de política monetaria es realizada con la vista puesta en el tipo de cambio, también denominado el ancla nominal de la economía. Es por este motivo que el mecanismo de transmisión de tasa de interés en Nicaragua no sea igual de determinante como en otros países. En otras palabras, la política monetaria no es lo suficientemente fuerte como para que cambios en la tasa del Banco Central tengan incidencia en las expectativas de inflación (ni en el sector real de la economía).
+
+En este sentido, si bien el banco central ha efectuado incrementos a su tasa de política monetaria, éstos cambios son realizados para garantizar la denominada paridad descubierta de tasa de interés: 
+
+$$
+i_{t}  = i_{t}^{*} + \frac{\Delta s_{t}^{e} }{s_{t}}+ \varepsilon_{t} 
+$$
+Es decir: 
+
+$$
+Tasa \, de\, interés = Tasa\, internacional + devaluación + riesgo\, país
+$$
+El punto aquí es que el Banco Central debe responder a alzas en la tasa internacional con alzas de magnitud similar. Si suponemos un riesgo país constante (en el corto plazo) y sabiendo que la devaluación esperada es también constante; la única forma que esta ecuación se cumpla luego de un cambio en la tasa internacional, es que la tasa de interés cambie en la proporción requerida.
+
+Esta acción evita la pérdida de reservas internacionales. Esto es porque si los agentes (típicamente la banca) percibe mejores retornos en el exterior, tienen un incentivo para dolarizar sus excesos de córdobas y llevarse esos recursos al exterior. Eso, en última instancia implica la reducción de las reservas internacionales, las que sabemos son clave para defender el tipo de cambio oficial. 
+
+En resumen, toda acción de política monetaria tendrá un efecto marginal sobre la inflación (invito a aquellas personas que lo deseen, que comprueben esta hipótesis).
+
+# Entonces, ¿qué se puede hacer frente a la inflación?
+El BCN tiene una herramienta que, si bien no es la más eficaz, incide directamente sobre la inflación: el tipo de cambio. Debido a las características que tiene la economía nicaragüense, el tipo de cambio es la variable que sirve para anclar la variación de los precios a un nivel determinado. 
+
+Existe una amplia discusión de cuál debería de ser este nivel, por ejemplo, en la investigación [Inflación Óptima en Nicaragua](https://www.secmca.org/recard/index.php/foro/article/view/19) se brindan argumentos para reducir la tasa de deslizamiento cambiario del BCN y, con ello, propiciar una inflación más baja. Una de las recomendaciones es reducir la tasa de deslizamiento para que los niveles de inflación de mediano plazo (inflación internacional más la devaluación) sean similares a las metas de inflación de nuestros principales socios comerciales. 
+
+**Y esto es precisamente lo que el BCN ha hecho en los últimos años**. Ha realizado 3 reducciones a la tasa de deslizamiento, para bajar las tasas de inflación en el mediano plazo. La última de estas reducciones fue realizada el 23 de enero de 2023 (Aquí te pongo el [comunicado del BCN](https://bcn.gob.ni/divulgacion-prensa/bcn-establece-la-tasa-de-deslizamiento-del-tipo-de-cambio-del-cordoba-con-1)), con la que  el BCN estableció una tasa de deslizamiento del 1% (antes 2%). Con la medida, el BCN apunta a una inflación más baja en el mediano plazo. 
+
+
+# ¿Qué podemos esperar para la inflación en los próximos meses?
+Como te comenté al inicio, las proyecciones del FMI indican que posiblemente ya pasó lo peor. La inflación debería ir normalizándose en los próximos meses. Esto irá ocurriendo en la medida que las acciones de política de los bancos centrales del mundo vayan haciendo efecto. Esa reducción de la inflación internacional será *importada* por Nicaragua.
+
+```{r grafico_3}
+
+fcst <- readxl::read_excel(paste0(path, "inflacion_capard.xlsx"), sheet = "GR")
+
+gr2 <- ggplotly(fcst %>% 
+  ggplot()+
+  geom_line(aes(x = `Años`, y = `Proyección`), colour = "#F66B0E", linewidth = 0.75)+
+  geom_line(aes(x = `Años`, y = `Inflación observada`), colour = "#205375", linewidth = 0.75)+
+  theme_bw()+
+  labs(title = "Proyección de la tasa de inflación de Nicaragua", x="", y="")
+) %>% 
+  layout(annotations = list(x = 0, y = -0.2, 
+                            text = "Fuente: WEO, Octubre 2022. FMI.",
+                            size = 2,
+                            showarrow = F, 
+                            xref = "paper", 
+                            yref = "paper"))
+
+gr2
+
+
+```
+
+A esto, hay que sumar la última medida de política cambiaria del BCN, la cual tendrá un impacto a la baja sobre la inflación, no solo de 2023 sino para los próximos años. Con esta medida, podríamos descontar aproximadamente un punto porcentual a la tasa de inflación proyectada para 2023.
+
+# Comentarios finales
+
+* La inflación es una variable de alto escrutinio público. Afecta directamente nuestra calidad de vida. 
+
+* El proceso inflacionario actual lo están viviendo la mayoría de los países del mundo. Los bancos centrales con política monetaria independiente, están aumentando sus tasas de interés de política monetaria para reducir la inflación.
+
+* Nicaragua no es la excepción. Sin embargo, las acciones de política monetaria del banco central, las cuales están supeditadas al régimen cambiario, tendrán un efecto marginal sobre la inflación. 
+
+* La última medida de política cambiaria sí tendrá una incidencia a la baja de la inflación, gracias a que el tipo de cambio es el ancla nominal de la economía.
+
+* La inflación en Nicaragua, por lo tanto, disminuirá en la medida que la inflación mundial lo haga, y se empiecen a percibir los efectos de la última modificación a la tasa devaluación. 
+
+* Finalmente, es muy importante que los formuladores de políticas económicas propicien una inflación baja y estable. La inflación es costosa, y si bien las reducciones a la tasa de deslizamiento *ayudan*, estas medidas no son 100% efectivas. El BCN debe continuar realizando mejoras al esquema de política monetaria del país para fortalecer el mecanismo de transmisión de su tasa de política monetaria hacia la inflación. 
+
+
+# Comentarios al artículo
+
+Agradeceré mucho tus comentarios al artículo o bien sugerencias de temas para siguientes entradas. Podés enviarlos a través de este [link](https://forms.gle/DmzLrEjvpp28uzin6)
+
+
+
+
+
+
+
+
+
