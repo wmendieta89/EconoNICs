@@ -1,0 +1,8 @@
+---
+title: "Lista de artículos"
+listing:
+  posts:
+   - welcome
+   - 2023-01-07-inflacin-en-nicaragua
+   - 2023-01-26-2anclanominal
+---
