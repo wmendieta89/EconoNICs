@@ -199,7 +199,7 @@ description: |
 author:
   - name: William Mendieta A.
     url: https://econonics.netlify.app/
-date: 2023-01-23
+date: 2023-01-22
 css: cuerpo.css
 output: distill::distill_article
 
