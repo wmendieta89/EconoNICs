@@ -12,15 +12,15 @@
       "path": "blog.html",
       "title": "Lista de artículos",
       "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2023-02-07T06:28:17-06:00"
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-05-12T00:24:19-06:00"
     },
     {
       "path": "index.html",
       "title": "William Mendieta",
       "author": [],
       "contents": "\r\n\r\n          \r\n          \r\n          \r\n          \r\n          EconoNICs\r\n          \r\n          \r\n          Home\r\n          Blog\r\n          ☰\r\n          \r\n          \r\n      \r\n        \r\n          \r\n            \r\n              \r\n            \r\n              William Mendieta\r\n            \r\n            \r\n              \r\n                \r\n                    \r\n                      \r\n                         Twitter\r\n                      \r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      \r\n                         LinkedIn\r\n                      \r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      \r\n                         Email\r\n                      \r\n                    \r\n                  \r\n                                  \r\n            \r\n          \r\n        \r\n        \r\n        \r\n          \r\n            \r\n            Bio\r\n            \r\n            Hola bienvenido a EconoNICs!\r\n            Me llamo William Mendieta, soy economista con experiencia\r\n            en banca central y banca privada en Nicaragua. Disfruto\r\n            leyendo e investigando la macroeconomía, escribiendo códigos\r\n            en R y enseñando.\r\n            En este espacio estaré compartiendo mi visión y análisis\r\n            acerca de la economía nicaragüense y, en ocasiones, del\r\n            resto del mundo.\r\n            \r\n          \r\n        \r\n      \r\n    \r\n\r\n    \r\n      \r\n        \r\n          \r\n            \r\n              \r\n            \r\n              William Mendieta\r\n            \r\n            \r\n              \r\n                \r\n                                    \r\n                    \r\n                       Twitter\r\n                    \r\n                  \r\n                                    \r\n                    \r\n                       LinkedIn\r\n                    \r\n                  \r\n                                    \r\n                    \r\n                       Email\r\n                    \r\n                  \r\n                                  \r\n              \r\n            \r\n            \r\n              \r\n              Bio\r\n              \r\n              Hola bienvenido a EconoNICs!\r\n              Me llamo William Mendieta, soy economista con\r\n              experiencia en banca central y banca privada en Nicaragua.\r\n              Disfruto leyendo e investigando la macroeconomía,\r\n              escribiendo códigos en R y enseñando.\r\n              En este espacio estaré compartiendo mi visión y\r\n              análisis acerca de la economía nicaragüense y, en\r\n              ocasiones, del resto del mundo.\r\n              \r\n            \r\n        \r\n      \r\n    \r\n\r\n    \r\n    \r\n    ",
-      "last_modified": "2023-04-26T18:15:16-06:00"
+      "last_modified": "2023-05-12T00:15:57-06:00"
     }
   ],
   "collections": ["posts/posts.json"]
