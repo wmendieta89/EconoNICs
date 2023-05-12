@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "Bienvenidos a EconoNICs"
 description: |
@@ -55,5 +54,3 @@ Esto es importante para vos, ya que sin importar el rol que tengas en la socieda
 Espero que disfrutes de los artículos y que sean enriquecedores para tu aprendizaje!
 
 Bienvenido a econoNICs!
-
->>>>>>> 644601811be9c97c88b2e94907902dc13300b3f2

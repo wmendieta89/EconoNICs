@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "Inflación en Nicaragua"
 description: |
@@ -199,7 +198,7 @@ description: |
 author:
   - name: William Mendieta A.
     url: https://econonics.netlify.app/
-date: 2023-01-22
+date: 2023-01-23
 css: cuerpo.css
 output: distill::distill_article
 
@@ -375,13 +374,3 @@ A esto, hay que sumar la última medida de política cambiaria del BCN, la cual 
 # Comentarios al artículo
 
 Agradeceré mucho tus comentarios al artículo o bien sugerencias de temas para siguientes entradas. Podés enviarlos a través de este [link](https://forms.gle/DmzLrEjvpp28uzin6)
-
-
-
-
-
-
-
-
-
->>>>>>> 644601811be9c97c88b2e94907902dc13300b3f2

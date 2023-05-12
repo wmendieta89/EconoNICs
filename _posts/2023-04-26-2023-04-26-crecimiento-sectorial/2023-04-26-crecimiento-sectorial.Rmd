@@ -1,0 +1,122 @@
+---
+title: "Crecimiento general y sectorial en Nicaragua"
+description: |
+  Acerca del crecimiento económico registrado en 2022, las contribuciones de cada sector al crecimiento y las perspectivas para 2023.
+author:
+  - name: William Mendieta A.
+    url: https://econonics.netlify.app/
+date: 2023-05-04
+output: distill::distill_article
+css: cuerpo.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+path <- "C:/Users/William Mendieta/Dropbox/Proyectos/Blog/EconoNICs/_posts/2023-04-26-2023-04-26-crecimiento-sectorial"
+
+setwd(path)
+
+
+source("Analisis_PIB_TRIMESTRAL_Nicaragua.R")
+
+
+pacman::p_load(tidyverse, janitor, readxl, plotly, knitr, kableExtra, sparkline)
+
+```
+
+Hola a todos! Bienvenidos a un nuevo post de EconoNics. En este post discutiremos acerca de los resultados  de crecimiento económico de Nicaragua en 2022 y qué podríamos esperar para los próximos años. 
+
+La actualización de los datos de actividad económica, son, junto con las publicaciones de la inflación, uno de los datos más esperados por la población en general y por las empresas. Esto es porque el crecimiento económico observado y proyectado es una pieza clave en el proceso de toma de decisiones, ya que, por ejemplo, marca el ritmo al que las ventas de las empresas pueden crecer. Es típico que las empresas liguen el crecimiento de sus ventas al crecimiento de la actividad en la que se encuentran, por lo que conocer a profundidad y *desmenuzar* las cifras de crecimiento económico se vuelve un ejercicio de alta relevancia para todos. 
+
+Adicionalmente, el BCN recientemente publicó su [informe de perspectivas económicas 2023](https://bcn.gob.ni/divulgacion-prensa/bcn-publica-informe-de-estado-de-la-econom%C3%ADa-y-perspectivas), en la que avizora un menor crecimiento económico para 2023 (entre 2.5% y 3.5%) respecto al 3.8% de 2022.
+
+# Nicaragua creció 3.8% en 2022
+
+El 31 de marzo de 2023 el BCN publicó el [Informe Anual 2022](https://www.bcn.gob.ni/sites/default/files/Informe%20Anual%202022.pdf), que es la publicación más importante del año para esta entidad bancaria. En este documento se informó que la producción de la economía nicaragüense creció 3.8% respecto a 2021 (10.3%). Sin embargo, este menor ritmo de crecimiento puede interpretarse, a grandes rasgos, como el regreso a la normalidad (en el contexto de las tasas de crecimiento del país).   
+
+Esto es porque el crecimiento de 2021 se encuentra *inflado* por la reducción de la actividad económica en el año 2020, atribuido a la pandemia de COVID-19. En otras palabras, la *desaceleración* del crecimiento obedece más a la base de comparación del crecimiento de 2021, que a una desaceleración del ritmo de crecimiento de la producción de la economía como tal. Para puntualizar esto, recordemos que gran parte de las pérdidas de crecimiento que se observaron en 2020 fueron producto de una reducción de la demanda externa (menos exportaciones, menos turismo, menor entrada de remesas, entre otros), lo cual está en línea con los mensajes plasmados en el [capítulo 1.6 del Informe Anual del BCN de 2020](https://www.bcn.gob.ni/sites/default/files/documentos/Informe_Anual_2020.pdf). 
+
+Es todavía más importante destacar que 2022 es el segundo año consecutivo de crecimiento, luego de 3 años de contracción económica.
+
+```{r crecimiento}
+p2
+```
+
+En el informe anual 2022 el BCN destaca que el crecimiento de la economía en 2022, desde la perspectiva de la demanda agregada, provino principalmente por impulsos de demanda interna (por un mayor consumo agregado) y, en menor medida, por un mejor dinamismo de la demanda externa. Desde la perspectiva de la producción, el informe destacó que el sector de servicios, que es el de mayor peso en la economía, empezó a recuperarse, aportando positivamente al crecimiento del país.
+
+Dicho esto, profundicemos más en los datos de crecimiento. Primero, identifiquemos aquellas actividades económicas que fueron más dinámicas (es decir, las que registraron la mayor tasa de crecimiento), y luego analicemos las actividades que más contribuyeron, es decir, aquellas que aportaron más para alcanzar esta tasa de 3.8%. 
+
+# ¿Cómo se explica el 3.8%?
+En esta sección utilizaré los datos del [PIB trimestral publicados por el BCN](https://www.bcn.gob.ni/sites/default/files/estadisticas/cuentas_nacionales/trimestrales/Cuadros_de_salida_CNT.xlsx). Las cifras que discutiremos son anuales, las cuales las obtuve de sumar el valor del PIB trimestral a lo largo de un año^[Aún no son públicas las estadísticas anuales, por lo que se debe hacer esta estimación. Lo positivo es que las cuentas nacionales siguen una metodología llamada *Benchmarking* que asegura la consistencia entre las estadísticas trimestrales y las anuales]. Es importante destacar que las cifras reales del PIB son aditivas entre trimestres, pero no entre sus componentes^[Es decir, podemos sumar el valor del PIB real a lo largo de los 4 trimestres, pero no se puede calcular el PIB real a partir de la suma del consumo, la inversión y las exportaciones netas. Esto se debe a la metodología de precios encadenados utilizada para calcular el PIB real]. Y analicemos el crecimiento primero por el lado de la producción.
+
+## Dinamismo económico por sectores
+Para esto basta con calcular la tasa de variación anual ($\dot{y}$) del volumen de cada actividad ($x_{t}$) versus su volumen del año 2021 ($x_{t-1}$), es decir: 
+
+$$
+\dot{y} = \frac{x_{t}}{x_{t-1}}*100-100 
+$$
+En el siguiente gráfico podemos ver las actividades más dinámicas, ordenadas de mayor a menor crecimiento en 2022:
+
+```{r}
+p3
+```
+
+Al analizar el gráfico destacan principalmente el dinamismo del sector de hoteles y restaurantes, transporte y comunicaciones, y comercio. Es importante destacar que estas tres actividades pertenecen al sector de servicios, que es el sector económico que más afectaciones sufrió entre los años 2018 y 2020. Esto cobra especial importancia ya que el sector de servicios acapara el 60% de todas las transacciones de la economía nicaragüense. Esto lo puedes verificar en el estudio *Hechos estilizados de la economía Nicaragüense* publicado [aquí](https://www.bcn.gob.ni/sites/default/files/revista/volumenVIII/Revista_Vol_8_2021P4.pdf) por el BCN.
+
+Lo segundo a destacar es que la gran mayoría de las actividades económicas cecieron, únicamente la actividad pecuaria y la construcción registraron reducciones respecto a 2021. La mala noticia, en este caso es que la construcción, que es una actividad de alta repercusión (es decir, su valor tiene incidencia en muchas de otras actividades económicas) decreció 12.2%, lo que puede asociarse a una menor inversión. 
+
+Para analizar estas cifras es bueno ponerlas en el contexto de los últimos años. En la siguiente tabla podrás ver las tasas de crecimiento registradas por cada actividad en los últimos años: 
+
+```{r}
+sparkline::sparkline(0)
+
+pib_produccion_tbl %>% 
+  filter(year(fecha)>2016) %>% 
+  select(yy, actividad, crecimiento) %>% 
+  pivot_wider(names_from = yy, values_from = crecimiento) %>% 
+  arrange(desc(`2022`)) %>% 
+  rename(Actividades = 1) %>%
+  rowwise() %>% 
+  mutate(Tendencia = spk_chr(c_across(-Actividades), type="line", lineColor="#205375", spotColor = "#F66B0E")) %>% 
+  ungroup() %>%
+  mutate(across(-c(Actividades, Tendencia), ~ scales::percent(. %>% round(digits = 3)))) %>%
+  kbl(escape = F) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T) 
+```
+
+Una actividad que quisiera destacar es la de la intermediación financiera y servicios conexos (la banca). El año 2022 sin duda fue uno muy positivo para la banca, luego de registrar contracciones durante 4 años consecutivos. Esto supone un cambio de tendencia muy relevante para el país. La banca la podemos pensar como las ruedas de la economía, ya que, al igual que las ruedas de un vehículo, cuando estas funcionan correctamente, permiten avanzar y cambiar dirección de forma eficiente. Esto es, fundamentalmente, porque el sistema financiero permite una asignación más eficiente de los recursos de la economía, trasladando los fondos de agentes superavitarios (es decir, que pueden ahorrar) a aquellos deficitarios (es decir, aquellos que desean consumir o invertir). 
+
+## Contribuciones al crecimiento
+Ahora que ya identificamos algunas de las actividades de mayor crecimiento en 2022, podemos calcular las contribuciones al crecimiento. Es importante hacer la distición entre el dinamismo de las actividades y su contribución. El dinamismo de una actividad es la variación que calculamos de la producción de una misma actividad versus sí misma, mientras que la contribución considera toda la estructura productiva del país, y cómo el crecimiento de una actividad en específico aporta al dinamismo de toda la economía. 
+
+Para calcular las contribuciones al crecimiento podemos usar la siguiente fórmula: 
+
+$$
+\dot{y}_{t}^{contr}= \frac{X_{t-1}}{PIBN_{t-1}}\times \dot{y}_{t}
+$$
+donde $\dot{y}_{t}^{contr}$ es la contribución del valor transado en la actividad $X_{t}$, al crecimiento. Ten en cuenta que estamos usando la proporción del año anterior de la actividad dentro del PIB nominal. En la siguiente tabla podrán ver cuánto aportó cada actividad al crecimiento económico. Si suman todas las actividades podrán llegar al 3.8% que indicó el BCN en el informe anual. Cada uno de los datos se interpreta como la contribución, en puntos porcentuales, al crecimiento económico de Nicaragua en 2021 y 2022.
+
+```{r}
+contribucion_actividades %>% 
+  rename(Actividades = actividad) %>% 
+  kbl(escape = F) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T)
+```
+
+# ¿Qué podemos esperar para 2023?
+
+El BCN proyecta un crecimiento entre 2.5% y 3.5%. El FMI, por su parte, en su informe de perspectivas económicas mundiales proyecta que nuestro país crecerá 3.02%, que es justo en el punto medio de la proyección del BCN.La CEPAL, por su parte, es menos optimista, y está apuntando a un crecimiento de 2.1% para el mismo año. Por otro lado, el Banco Mundial apunta a un crecimiento de 3%, similar al del FMI. 
+
+En términos generales, y si prevalecen las condiciones actuales, todas estas instituciones proyectan un menor crecimiento para el país en 2023. Existen múltiples factores que pueden restar a este crecimiento, como por ejemplo nuevos incrementos en los precios del petróleo. Dentro del balance de aspectos positivos está el mayor dinamismo de la banca. De continuar esta dinámica, es posible alcanzar las tasas de crecimiento antes indicadas.  
+
+
+# Comentarios al artículo
+
+Agradeceré mucho tus comentarios al artículo o bien sugerencias de temas para siguientes entradas. Podés enviarlos a través de este [link](https://forms.gle/DmzLrEjvpp28uzin6)
+
+
+
+
+
+

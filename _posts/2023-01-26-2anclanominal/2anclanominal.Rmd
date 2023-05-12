@@ -128,7 +128,7 @@ La inflación en Nicaragua evoluciona de acuerdo al tipo de cambio y la inflaci�
 
 Existe amplia evidencia sobre la alta sensibilidad que tiene la inflación ante *shocks* macroeconómicos externos. Por ejemplo, en la investigación [Un análisis de sensibilidad macroeconómica para Nicaragua](https://www.secmca.org/recard/index.php/recard/article/view/165) el autor estima que los choques externos que sufre la economía explican el 47.5% del total del comportamiento de la inflación al cabo de 6 meses. Además, luego de 12 meses explican casi el 70% de su variabilidad. 
 
-En la misma línea, la investigación [¿Qué tan importante son los choques petroleros para explicar las fuctuaciones observadas en el IPC y el IMAE?](https://www.bcn.gob.ni/system/files_force/documentos/DT-57_Que_tan_importante_son_choques_petr%C3%B3leo_IPC_IMAE.pdf?download=1) encuentra que el 40% del comportamiento histórico de la inflación (período 1994-2016) se debe a las variaciones de los precios del petróleo. 
+En la misma línea, la investigación [¿Qué tan importante son los choques petroleros para explicar las fuctuaciones observadas en el IPC y el IMAE?](https://www.bcn.gob.ni/system/files_force/documentos/DT-57_Que_tan_importante_son_choques_petr%C3%B3leo_IPC_IMAE.pdf?download=1) encuentra que el 40% del comportamiento histórico de la inflación (período 1994-2016) se debe las variaciones de los precios del petróleo. 
 
 En resumen, si bien podemos esperar que la inflación disminuya (en aproximadamente 1 punto porcentual), esta continuará siendo susceptible a lo que ocurra con los precios internacionales, principalmente los de las materias primas. 
 
