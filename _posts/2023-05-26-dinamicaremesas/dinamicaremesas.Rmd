@@ -1,0 +1,149 @@
+---
+title: "dinamica_remesas"
+description: |
+  Respecto a la evolución reciente de las remesas familiares en Nicaragua
+author:
+  - name: William Mendieta A.
+    url: https://econonics.netlify.app/
+date: 2023-05-29
+css: cuerpo.css
+output: distill::distill_article
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+ruta <- "C:/Users/William Mendieta/Documents/GitHub/EconoNICs/_posts/2023-05-26-dinamicaremesas/"
+
+source(paste0(ruta, "analisis_remesas.R"))
+
+```
+
+# Introducción
+
+Hola a todos! Bienvenidos a EconoNICs. 
+
+En este post quisiera discutir un fenómeno de alta importancia para la economía de nuestro país: el rápido incremento de las remesas familiares. Principalmente quisiera destacar que, si bien existen múltiples beneficios a esta alza tan importante, también hay riesgos macroeconómicos a los que el país se expone con  esta situación.
+
+Sin más preámbulo, empecemos la discusión. 
+
+# Evolución reciente de las remesas familiares
+
+En el siguiente gráfico muestro la evolución de las remesas en los últimos 5 años. Aproximadamente a partir de mediados del año 2021 la tendencia de las remesas cambió de forma importante, indicando un crecimiento más acelerado. La línea azul oscuro son las remesas, mientras que la línea naranja es la tendencia estimada de las remesas. 
+
+```{r}
+gr1 <- remesas %>% 
+  filter(year(fecha)>2017) %>% 
+  rename(Remesas = value) %>% 
+  ggplot(aes(fecha, Remesas))+
+  geom_line(color = "#112B3C")+
+  geom_smooth(method = "loess", 
+              se = F, 
+              alpha = 0.5, 
+              linewidth = 0.5,
+              color = "#F66B0E")+
+  theme_bw()+
+  labs(title = "Entrada de remesas familiares (millones de dólares)", 
+       y="", x="")
+
+ggplotly(gr1)
+```
+
+Esta dinámica resultó en flujos de remesas por 3,224.9 millones de dólares en el año 2022 (US$2,146.9 millones recibidas en 2021), es decir, un crecimiento de  50.2%. Para poner este número en perspectiva, el crecimiento promedio de las remesas entre 2019 y 2021 fue de 13%, es decir, las remesas están creciendo a una velocidad casi 4 veces superior al crecimiento promedio de los 3 años previos.    
+
+```{r}
+gr2 <- remesas_anuales_tbl %>% 
+  filter(yy > 2016) %>% 
+  ggplot()+
+  geom_col(aes(yy, `Flujo enero-marzo anualizado`), fill = "lightgrey", color = "darkgrey")+
+  geom_col(aes(yy, remesas), fill = "#205375")+
+  theme_bw()+
+  labs(title = "Remesas recibidas anualmente (millones de dolares)",
+      x = "", y= "")
+ggplotly(gr2)  
+```
+
+En lo que llevamos de 2023 este ritmo se ha acelerado aún más. Al comparar los flujos recibidos entre enero y marzo de 2023 versus 2022, ¡éstos han crecido 61%! Si hacemos una anualización de los flujos recibidos entre enero y marzo, al cierre de 2023 el país habrá recibido aproximadamente 4,081.2 millones de dólares en remesas (US$1,020.3 / 3 * 12).
+
+# Analicemos las ventajas de esta situación 
+
+Esta situación sin lugar a dudas tiene múltiples beneficios para nuestro país.
+
+En primer lugar, el consumo agregado de la economía se ve favorecido. Las remesas aumentan el ingreso disponible de las familias receptoras, lo que les permite gastar más para satisfacer sus necesidades. En el agregado, es decir, cuando sumamos a todas las familias que están en esta situación, el consumo de toda la economía aumenta, promoviendo, al menos en el corto plazo, un mayor dinamismo económico.
+
+Esta situación se evidencia en los datos. Cuando comparamos el crecimiento de la economía nicaragüense y el crecimiento de los flujos de remesas, se encuentra una correlación positiva entre ambas de 0.63.  
+
+De hecho, tomando un paso adicional, se puede evidenciar que esta correlación se ha fortalecido en los últimos 11 años. Para ilustrar este último punto, calculé la correlación móvil entre el crecimiento del IMAE y el crecimiento de los flujos de remesas, bajo una ventana móvil de 60 meses. La correlación más baja registrada en los últimos 11 años fue de 0.48 (en el año 2012 aproximadamente), mientras que la mas alta que se registró fue de 0.70 (en el año 2021). 
+
+```{r}
+rem_plus_imae <- datos_macro %>% 
+  filter(str_detect(name, "imae|remesas"),
+         !str_detect(name, "sin_impuestos")) %>% 
+  select(fecha, name, value) %>% 
+  pivot_wider(names_from = name, values_from = value) %>% 
+  arrange(fecha) %>% 
+  mutate(across(-fecha, ~ .x / lag(.x, 1) * 100- 100)) %>% 
+  pivot_longer(-fecha) %>% 
+  filter(year(fecha)> 2006)
+
+roll_cor <- slidify(
+  .f = cor,
+  .period = 12*5, 
+  .align = "right"
+)
+
+gr7 <- ggplotly(rem_plus_imae %>% 
+  pivot_wider(names_from = name, values_from = value) %>% 
+  mutate(rollcorr = roll_cor(imae, remesas)) %>% 
+  drop_na(rollcorr) %>% 
+  ggplot()+
+  geom_line(aes(fecha, rollcorr), color = "steelblue")+
+  geom_text(
+    y = 0.55, x = as.numeric(as.Date("2020-01-31")),
+    label = "Forma de cálculo: correlación móvil <br> usando una ventana de <br> estimación fija de 60 meses",
+    size = 3, 
+    color = "black")+
+  theme_bw()+
+  labs(title = "Remesas - Crecimiento: Una correlación que se fortalece",
+       x="", y="")
+)
+
+gr7
+```
+
+Es importante aclarar que correlación no implica que exista causalidad. Es decir, que el hecho que los flujos de remesas estén en aumento, no necesariamente implicará un mayor crecimiento para el país. Lo que si es evidente, y que se concluye a partir del gráfico, es que el grado de asociación entre ambas variables se ha fortalecido en los últimos años. 
+
+Para sustentar más este argumento, basta con que verifiqués que  los flujos de remesas han pasado de representar el 10% del PIB en el año 2006 a 21% en el año 2022. Durante el período 2006-2019 estos flujos fueron equivalentes al 10% del PIB en promedio; los últimos 3 años éstos han sido equivalentes al 17% del PIB.   
+
+En segundo lugar, las remesas tienen un segundo efecto sobre la actividad económica que es de alta relevancia. De acuerdo a múltiples estudios las remesas reducen la volatilidad de variables macroeconómicas importantes como el producto o el consumo. 
+
+En la siguiente tabla pueden ver algunos de estos estudios con un breve resumen de sus principales resultados: 
+
+```{r}
+readxl::read_xlsx(paste0(ruta,"remittances_output_volatility.xlsx")) %>% 
+  select(-DOI) %>% 
+  knitr::kable() %>% 
+  kableExtra::scroll_box(width = "1000px", height = "400px") %>% 
+  kableExtra::kable_paper("hover", full_width = F)
+  
+```
+
+En otras palabras, las remesas dan *seguridad* al ingreso de las familias receptoras. Esto, en última instancia promueve el consumo, y, en términos más generales, les permite una mejor calidad de vida.
+
+En tercer lugar, la entrada de remesas trae beneficios a la estabilidad del régimen cambiario de Nicaragua, ya que es una fuente de divisas para la economía. Esto, en última instancia se ve reflejando en una brecha cambiaria relativamente baja. Profundicemos un poco más en este punto.
+
+La brecha cambiaria es la diferencia porcentual entre el tipo de cambio de mercado (el que cobran/pagan bancos, casas de cambio, cambistas, etc.) y el tipo de cambio oficial (el que publica el BCN). El tipo de cambio de mercado se acercará al tipo de cambio oficial en la medida que la economía tenga una cantidad suficiente de dólares (es decir, que la demanda de dólares pueda ser suplida por el mercado). 
+
+Tengo la hipótesis que el rápido crecimiento de las remesas ha favorecido para que la brecha cambiaria se ubique en niveles históricamente bajos. 
+
+citar últimos datos de la brecha cambiaria, informe monetario con compras de divisas por parte del banco central, crecimiento de reservas internacionales. 
+
+
+
+
+
+
+
+
+
