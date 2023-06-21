@@ -165,6 +165,19 @@ cor_data <- rem_plus_imae %>%
 
 cor(cor_data$imae, cor_data$remesas)
 
+# Brecha cambiaria
+
+
+brecha <- datos_macro %>%
+  filter(str_detect(name, "brecha")) %>% 
+  select(fecha, name, value) %>% 
+  glimpse()
+
+
+brecha %>% 
+  plot_time_series(fecha, value, .smooth = F)
+
+
 
 
 

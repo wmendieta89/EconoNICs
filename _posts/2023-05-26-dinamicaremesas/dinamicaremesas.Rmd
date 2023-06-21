@@ -1,11 +1,11 @@
 ---
-title: "dinamica_remesas"
+title: "Dinámica reciente de las remesas familiares en Nicaragua"
 description: |
-  Respecto a la evolución reciente de las remesas familiares en Nicaragua
+  Respecto al desempeño reciente de las remesas y los efectos económicos asociados.
 author:
   - name: William Mendieta A.
     url: https://econonics.netlify.app/
-date: 2023-05-29
+date: 2023-06-20
 css: cuerpo.css
 output: distill::distill_article
 ---
@@ -26,9 +26,7 @@ Hola a todos! Bienvenidos a EconoNICs.
 
 En este post quisiera discutir un fenómeno de alta importancia para la economía de nuestro país: el rápido incremento de las remesas familiares. Principalmente quisiera destacar que, si bien existen múltiples beneficios a esta alza tan importante, también hay riesgos macroeconómicos a los que el país se expone con  esta situación.
 
-Desde ya te advierto, este será un post un poco más largo de lo habitual porque hay muchas cosas que analizar. Así que preparate un cafecito antes de empezar a leer.
-
-Sin más preámbulo, !empecemos!
+Sin más preámbulo, empecemos la discusión.
 
 # Evolución reciente de las remesas familiares
 
@@ -68,7 +66,7 @@ ggplotly(gr2)
 
 En lo que llevamos de 2023 este ritmo se ha acelerado aún más. Al comparar los flujos recibidos entre enero y marzo de 2023 versus 2022, ¡éstos han crecido 61%! Si hacemos una anualización de los flujos recibidos entre enero y marzo, al cierre de 2023 el país habrá recibido aproximadamente 4,081.2 millones de dólares en remesas (US$1,020.3 / 3 * 12).
 
-# ¿Esto es súper bueno para el país, no?
+# Analicemos las ventajas de esta situación
 
 Esta situación sin lugar a dudas tiene múltiples beneficios para nuestro país.
 
@@ -76,7 +74,7 @@ En primer lugar, el consumo agregado de la economía se ve favorecido. Las remes
 
 Esta situación se evidencia en los datos. Cuando comparamos el crecimiento de la economía nicaragüense y el crecimiento de los flujos de remesas, se encuentra una correlación positiva entre ambas de 0.63.  
 
-Profundizando un poco más, se puede evidenciar que esta correlación se ha fortalecido en los últimos 11 años. Para ilustrar este último punto, calculé la correlación entre el crecimiento del IMAE y el crecimiento de los flujos de remesas, bajo una ventana móvil de 60 meses. La correlación más baja registrada en los últimos 11 años fue de 0.48 (en el año 2012 aproximadamente), mientras que la mas alta que se registró fue de 0.70 (en el año 2021).
+De hecho, tomando un paso adicional, se puede evidenciar que esta correlación se ha fortalecido en los últimos 11 años. Para ilustrar este último punto, calculé la correlación móvil entre el crecimiento del IMAE y el crecimiento de los flujos de remesas, bajo una ventana móvil de 60 meses. La correlación más baja registrada en los últimos 11 años fue de 0.48 (en el año 2012 aproximadamente), mientras que la mas alta que se registró fue de 0.70 (en el año 2021).
 
 ```{r}
 rem_plus_imae <- datos_macro %>%
@@ -100,7 +98,7 @@ gr7 <- ggplotly(rem_plus_imae %>%
   mutate(rollcorr = roll_cor(imae, remesas)) %>%
   drop_na(rollcorr) %>%
   ggplot()+
-  geom_line(aes(fecha, rollcorr), color = "steelblue")+
+  geom_line(aes(fecha, rollcorr), color = "#205375")+
   geom_text(
     y = 0.55, x = as.numeric(as.Date("2020-01-31")),
     label = "Forma de cálculo: correlación móvil <br> usando una ventana de <br> estimación fija de 60 meses",
@@ -114,13 +112,13 @@ gr7 <- ggplotly(rem_plus_imae %>%
 gr7
 ```
 
-Es importante aclarar que **correlación no implica causalidad**. Es decir, que el hecho que los flujos de remesas estén en aumento, no necesariamente implicará un mayor crecimiento para el país. Lo que si es evidente, y que se concluye a partir del gráfico, es que el grado de asociación entre ambas variables se ha fortalecido en los últimos años.
+Es importante aclarar que correlación no implica que exista causalidad. Es decir, que el hecho que los flujos de remesas estén en aumento, no necesariamente implicará un mayor crecimiento para el país. Lo que si es evidente, y que se concluye a partir del gráfico, es que el grado de asociación entre ambas variables se ha fortalecido en los últimos años.
 
 Para sustentar más este argumento, basta con que verifiqués que  los flujos de remesas han pasado de representar el 10% del PIB en el año 2006 a 21% en el año 2022. Durante el período 2006-2019 estos flujos fueron equivalentes al 10% del PIB en promedio; los últimos 3 años éstos han sido equivalentes al 17% del PIB.  
 
 En segundo lugar, las remesas tienen un segundo efecto sobre la actividad económica que es de alta relevancia. De acuerdo a múltiples estudios las remesas reducen la volatilidad de variables macroeconómicas importantes como el producto o el consumo.
 
-En la siguiente tabla puedes ver algunos de estos estudios con un breve resumen de sus principales resultados:
+En la siguiente tabla pueden ver algunos de estos estudios con un breve resumen de sus principales resultados:
 
 ```{r}
 readxl::read_xlsx(paste0(ruta,"remittances_output_volatility.xlsx")) %>%
@@ -131,56 +129,78 @@ readxl::read_xlsx(paste0(ruta,"remittances_output_volatility.xlsx")) %>%
  
 ```
 
-En otras palabras, las remesas dan *seguridad* al ingreso de las familias receptoras. Esta mayor seguridad promueve el consumo, y, en términos más generales, les da una mejor calidad de vida. El resultado final de esto es un crecimiento menos volátil o incierto.
+En otras palabras, las remesas dan *seguridad* al ingreso de las familias receptoras. Esto, en última instancia promueve el consumo, y, en términos más generales, les permite una mejor calidad de vida. En última instancia, esto promueve el crecimiento del país.
 
-En tercer lugar, la entrada de remesas trae beneficios a la estabilidad del esquema cambiario de Nicaragua, ya que es una fuente de divisas para la economía. Esto, se ve reflejando en una brecha cambiaria relativamente baja. Profundicemos un poco más en este punto.
+En tercer lugar, la entrada de remesas trae beneficios a la estabilidad del régimen cambiario de Nicaragua, ya que es una fuente de divisas para la economía. Esto se ve reflejado en una brecha cambiaria relativamente baja. Profundicemos un poco más en este punto.
 
 La brecha cambiaria es la diferencia porcentual entre el tipo de cambio de mercado (el que cobran/pagan bancos, casas de cambio, cambistas, etc.) y el tipo de cambio oficial (el que publica el BCN). El tipo de cambio de mercado se acercará al tipo de cambio oficial en la medida que la economía tenga una cantidad suficiente de dólares (es decir, que la demanda de dólares pueda ser suplida por el mercado).
 
-[AGREGAR AQUI GRÁFICO DE LA BRECHA CAMBIARIA]
+```{r}
+brecha <- datos_macro %>%
+  filter(str_detect(name, "brecha")) %>% 
+  select(fecha, name, value)
 
-Valdría la pena explorar si el rápido crecimiento de las remesas ha favorecido el actual comportamiento de la brecha cambiaria. Evidentemente, hay otros factores que pueden incidir en la menor brecha cambiaria, como por ejemplo la [reducción de las importaciones](https://www.bcn.gob.ni/sites/default/files/documentos/Informe%20de%20Comercio%20Exterior%20al%20I%20trimestre%202023.pdf), las que al primer trimestre de 2023 ha disminuido 7.9% respecto al año pasado. Esto, evidentemente reduce la demanda de divisas de la economía.
+gr8 <- brecha %>% 
+  filter(year(fecha)>2016) %>% 
+  ggplot()+
+  geom_line(aes(fecha, value), color = "#205375")+
+  geom_hline(yintercept = 1, color = "darkred", linetype = "dashed")+
+  geom_hline(yintercept = 2, color = "darkred", linetype = "dotted")+
+  theme_bw()+
+  labs(title = "Brecha cambiaria (porcentajes)", x= "", y="") 
 
-Ambos efectos podrían ser los principales responsables de la acumulación de reservas internacionales del BCN. Al 30 de abril las reservas internacionales registran un saldo de [US$ 5,401.6 millones](https://www.bcn.gob.ni/IRR/graficos/reservas.php). Para poner en perspectiva este número, desde el año 2020 hasta el presente, las RIB del BCN se han más que duplicado, creciendo 168% (saldo de RIB en 2020 de US$ 3,211.9).
+gr8 <- ggplotly(gr8)
 
-Pero si bien estas son buenas noticias para el país, hay algunos factores de riesgo que se deben considerar.
+gr8
 
-# ¿No todo son buenas noticias?
+```
 
-Desafortunadamente, no todo de esta situación es positivo. Existen algunas consecuencias del rápido crecimiento de las remesas que pueden aumentar el riesgo macroeconómico del país, e inclusive en el largo plazo lastrar el crecimiento. Permitime elaborar un poco más en este punto.
+
+En el gráfico anterior observamos que la brecha cambiaria en los últimos dos años permanece por debajo del 2% (que es el porcentaje de comisión que cobra el BCN por venderle dólares a los bancos desde el año 2020) e inclusive por debajo de un 1% (que era el antiguo porcentaje de comisión). Esto indica un buen abastecimiento de divisas en la economía, lo que puede asociarse a la dinámica de las remesas.
+
+Evidentemente, hay otros factores que pueden incidir en la menor brecha cambiaria, como por ejemplo la [reducción de las importaciones](https://www.bcn.gob.ni/sites/default/files/documentos/Informe%20de%20Comercio%20Exterior%20al%20I%20trimestre%202023.pdf), las que al primer trimestre de 2023 ha disminuido 7.9% respecto al año pasado. Esta situación reduce la demanda de divisas de la economía, propiciando también una menor brecha cambiaria.
+
+Ambos efectos podrían ser los principales responsables de la acumulación de reservas internacionales del BCN. Al 30 de abril las reservas internacionales registran un saldo de [US$ 5,401.6 millones](https://www.bcn.gob.ni/IRR/graficos/reservas.php). Para poner en perspectiva este número, desde el año 2020 hasta el presente, las RIB del BCN se han más que duplicado, creciendo 168% (saldo de RIB en 2020 de US$ 3,211.9)
+
+# La otra cara de la moneda
+
+Desfortunadamente no todo son buenas noticias. Existen principalmente tres efectos que pueden aumentar el riesgo macroeconómico y/o lastrar el crecimiento económico. Algunos de estos son: 
+
+1. Mayor dependencia de flujos externos, lo que incrementa la vulnerabilidad de la economía. 
+2. Mayor inflación. 
+3. Menor productividad y, por ende, menor crecimiento (como mínimo en el largo plazo).
+
+
+## Una mayor dependencia es sinónimo de mayor riesgo macroeconómco
 
 Un riesgo macroeconómico se puede definir como una condición en la economía que puede tener consecuencias negativas en el bienestar de las personas y/o en las operaciones de las empresas. En otras palabras, un riesgo macroeconómico no es un costo en sí mismo, sino una condición que hace que los choques que sufre la economía tengan mayores efectos negativos. Esto es consistente con la idea de que los riesgos macroeconómicos pueden ser causados por factores internos o externos y pueden tener un impacto significativo en la economía de un país en su conjunto.
 
-La entrada acelerada de las remesas que vive nuestro país puede aumentar los riesgos macroeconómicos desde diferentes perspectivas. Algunos de estos son: 
+La entrada acelerada de las remesas que vive nuestro país puede aumentar el riesgo macroeconómico al crear dependencia a estos flujos. Esta mayor dependencia incrementa la vulnerabilidad de la economía a choques externos. Por ejemplo, seríamos más vulnerables a una recesión en EEUU, la cual ya no solo implicaría una menor demanda externa (menos exportaciones), sino que un menor empleo hispano repercutiría sobre la dinámica de las remesas y, con ello, un menor consumo agregado en nuestra economía. A mayor dependencia de las remesas, este mecanismo de transmisión se hace más fuerte.
 
-1. Aumentar la vulnerabilidad externa del país.
-2. Aumentar la inflación doméstica.
-3. Reducir la competitividad externa.
-4. Reducir la productividad de la economía.
+## Presiones de demanda resultan en mayor inflación
 
-Permitime profundizar en cada uno de estos puntos.
+En segundo lugar, las remesas pueden tener un impacto sobre los precios. En este sentido, si los receptores de remesas tienen un mayor poder adquisitivo, esto puede resultar en una mayor demanda de bienes y servicios en la economía. Si todos los demás factores permanencen constantes, estas *presiones de demanda* pueden provocar alzas en los precios de la economía.
 
-## Mayores remesas implican mayor vulnerabilidad externa 
+Esta situación reduce la competitividad externa del país. Una mayor inflación reduce el poder adquisitivo del córdoba frente a otras monedas. Este deterioro implicaría que para adquirir bienes y servicios del exterior los nicargüenses deban pagar con córdobas con menor poder adquisitivo frente a monedas cuyo poder adquisitivo se deteriore de forma más lenta.
 
-Primero, esta condición puede generar dependencia económico de estos flujos, aumentando la vulnerabilidad de la economía a choques externos. Por ejemplo, una recesión en EEUU implicaría una reducción de las remesas, afectando el consumo agregado de la economía. En este caso, habría una transmisión de la recesión de EEUU hacia nuestra economía, a pesar de que el país no está en recesión. A mayor dependencia de las remesas, esta transmisión sería más alta.
+## Golpes a la productividad y al crecimiento en el largo plazo
 
-## Mayores remesas pueden resultar en una mayor inflación
+A pesar de lo anterior, quizás el efecto más importante se asocia a las posibles pérdidas de productividad de la economía. Si bien la dinámica actual de las remesas se puede asociar al buen desempeño del mercado laboral en EEUU (principal origen de las remesas), también podría ser consencuencia de un aumento de la migración. Esto último tiene efectos negativos sobre la productividad de la economía, principalmente en el largo plazo, debido a la *fuga de talentos* y/o la *reducción de mano de obra productiva*.
 
-En segundo lugar, las remesas pueden tener un impacto negativo sobre los precios. En este sentido, un mayor poder adquisitivo de la población gracias a las remesas puede resultar en una mayor demanda de bienes y servicios en la economía. Si todos los demás factores permanencen constantes, estas *presiones de demanda* pueden provocar alzas en los precios de la economía.
+En ambos casos, las empresas pierden empleados productivos. Sus índices de rotación aumentan y se reduce la velocidad de contratación. Esta situación, que golpea especialmente a aquellas que son intensivas en mano de obra, resulta en presiones sobre sus flujos de caja, debido a la reducción del capital de trabajo por el pago de indemnizaciones. También tienen efectos negativos sobre sus ganancias, debido a que se debe provisionar un mayor pasivo laboral.
 
-Dado que las remesas generar un *efecto riqueza* para las familias receptoras, es decir, su poder adquisitivo mejora, las empresas enfrentan una mayor demanda de sus productos. De acuerdo a los principios básicos de economía, cuando la demanda de bienes y servicios aumenta más rápidamente que la oferta, se genera una escasez relativa, que hace que los precios en la economía aumenten.
+En el largo plazo, esta condición genera escasez de ciertas profesiones u oficios (encareciendo estos servicios), implica una menor innovación y emprendedurismo; además, una adopción más lenta de tecnologías y una menor recaudación fiscal (asociada a las remuneraciones).
 
-## El por qué las remesas están aumentando importa muchísimo
 
-Esta situación acarrea el tercer efecto negativo de la entrada de remesas: el país puede sufrir una mayor inflación y, con ello, perder competitividad externa. Una mayor inflación en el país reduce el poder adquisitivo del córdoba frente a otras monedas. Este deterioro implicaría que para adquirir bienes y servicios del exterior los nicargüenses deban pagar con córdobas con menor poder adquisitivo frente a monedas cuyo poder adquisitivo se deteriore de forma más lenta. Permitime aclarar un poco más este argumento.
+# Comentarios finales 
 
-La razón detrás del crecimiento acelerado de las remesas importa mucho. Precisamente, esta aceleración en la entrada de remesas puede deberse a dos factores complementarios: al buen desempeño del mercado laboral en Estados Unidos, y la migración de nicaragüenses (principalmente) hacia este país; siendo esto último el factor que puede resultar en pérdida de competitividad externa.
+Nicaragua vive una situación excepcional con el acelerado ingreso de remesas. En un lapso de menos de 3 años, las remesas pasaron de representar el 10% del PIB al 17% del PIB, un incremento sin precedentes en la historia reciente de nuestro país. 
 
-Respecto al primer factor, diversos medios de comunicación en EEUU apuntan a un mercado laboral con un desempeño sólido y continuado. Por ejemplo, el [Wall Street Journal (WSJ)](https://www.wsj.com/articles/april-jobs-report-unemployment-rate-economy-growth-2023-a500d302) informó a inicios de mayo que la economía estadounidense continúa creando empleos (253 mil nuevas plazas en abril). Un dato de alta relevancia para la economía latinoamericana es que el empleo hispano ha alcanzado niveles históricamente bajos, siendo esto último un motor de crecimiento para las remesas. Esto, evidentemente tiene un impacto positivo para nuestra economía, pero... 
+La entrada acelerada de remesas le da a la economía una cara muy positiva, ya que promueve el crecimiento, la estabilidad del consumo agregado y niveles adecuados de divisas en la economía. 
 
-En cuanto al segundo factor, aumentos anormales en los flujos migratorios pueden repercutir en diferentes indicadores empresariales que elevan sus gastos: una mayor rotación de personal operativo, mayores tiempos de contratación, flujos de operaciones con atrasos, menores tiempos de respuesta, y un potencialmente largo etcétera. 
+Sin embargo, existe una cara no tan bonita. La economía se expone a nuevos riesgos macroeconómicos, una mayor exposición a choques externos, pérdidas de competitividad y, en general, una menor productividad. 
 
-Cuando se empiezan a sumar cada uno de estos inconvenientes, las operaciones de las empresas se pueden ver condicionadas. Pongamos en perspectiva esto con un ejemplo. Una mayor rotación de personal resulta en mayores pagos por indemnización de la empresa hacia los empleados que la dejan. Esto tiene dos impactos importantes en los estados financieros. Primero, en la medida que este indicador va en aumento, la empresa registra salidas de efectivo que pueden reducir su capital de trabajo, empeorando su flujo de caja. En segundo lugar, si este indicador aumenta, la empresa debe provisionar más gastos asociados a pagos por indemnizaciones, lo que reduce las ganancias netas de la empresa. En esta situación, para mejorar sus utilidades las empresas pueden emprender procesos de recortes de gastos o bien, aumentar sus precios. Esto último genera mayor inflación.
+Es por lo tanto de gran importancia velar por la formulación de medidas económicas que mejoren la calidad del gasto de las remesas. Es decir, medidas que promuevan su inversión y no el consumo total de estos recursos. Esto permitiría mitigar los efectos negativos de esta nueva realidad económica.
 
 
 
