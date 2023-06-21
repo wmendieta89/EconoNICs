@@ -68,7 +68,13 @@ En lo que llevamos de 2023 este ritmo se ha acelerado aún más. Al comparar los
 
 # Analicemos las ventajas de esta situación
 
-Esta situación sin lugar a dudas tiene múltiples beneficios para nuestro país.
+Esta situación sin lugar a dudas tiene múltiples beneficios para nuestro país. Algunos de estos beneficios son: 
+
+1. Un mayor consumo agregado y mayor crecimiento en el corto plazo. 
+2. Una mayor estabilidad del consumo y la demanda agregada de la economía.
+3. Una mayor oferta de divisas, que promueve la estabilidad del régimen cambiario.
+
+## Impulsos al consumo y al crecimiento
 
 En primer lugar, el consumo agregado de la economía se ve favorecido. Las remesas aumentan el ingreso disponible de las familias receptoras, lo que les permite gastar más para satisfacer sus necesidades. En el agregado, es decir, cuando sumamos a todas las familias que están en esta situación, el consumo de toda la economía aumenta, promoviendo, al menos en el corto plazo, un mayor dinamismo económico.
 
@@ -116,6 +122,8 @@ Es importante aclarar que correlación no implica que exista causalidad. Es deci
 
 Para sustentar más este argumento, basta con que verifiqués que  los flujos de remesas han pasado de representar el 10% del PIB en el año 2006 a 21% en el año 2022. Durante el período 2006-2019 estos flujos fueron equivalentes al 10% del PIB en promedio; los últimos 3 años éstos han sido equivalentes al 17% del PIB.  
 
+## Reducción de la volatilidad del ingreso y del consumo agregado
+
 En segundo lugar, las remesas tienen un segundo efecto sobre la actividad económica que es de alta relevancia. De acuerdo a múltiples estudios las remesas reducen la volatilidad de variables macroeconómicas importantes como el producto o el consumo.
 
 En la siguiente tabla pueden ver algunos de estos estudios con un breve resumen de sus principales resultados:
@@ -129,7 +137,9 @@ readxl::read_xlsx(paste0(ruta,"remittances_output_volatility.xlsx")) %>%
  
 ```
 
-En otras palabras, las remesas dan *seguridad* al ingreso de las familias receptoras. Esto, en última instancia promueve el consumo, y, en términos más generales, les permite una mejor calidad de vida. En última instancia, esto promueve el crecimiento del país.
+En otras palabras, las remesas dan *seguridad* al ingreso de las familias receptoras, lo que promueve el consumo, y, en términos más generales, les permite una mejor calidad de vida. En última instancia, esto promueve el crecimiento del país.
+
+## Estabilidad de la oferta de divisas
 
 En tercer lugar, la entrada de remesas trae beneficios a la estabilidad del régimen cambiario de Nicaragua, ya que es una fuente de divisas para la economía. Esto se ve reflejado en una brecha cambiaria relativamente baja. Profundicemos un poco más en este punto.
 
@@ -162,13 +172,19 @@ Evidentemente, hay otros factores que pueden incidir en la menor brecha cambiari
 
 Ambos efectos podrían ser los principales responsables de la acumulación de reservas internacionales del BCN. Al 30 de abril las reservas internacionales registran un saldo de [US$ 5,401.6 millones](https://www.bcn.gob.ni/IRR/graficos/reservas.php). Para poner en perspectiva este número, desde el año 2020 hasta el presente, las RIB del BCN se han más que duplicado, creciendo 168% (saldo de RIB en 2020 de US$ 3,211.9)
 
+## Otros poteciales beneficios
+
+En cuarto lugar, quisiera destacar que las remesas promueven el desarrollo financiero en los países receptores. Existe evidencia que en países en desarrollo las remesas tienen un impacto positivo en el desarrollo del sistema financiero. Un estudio aplicado a [Bangladesh](https://doi.org/10.1016/J.ECONMOD.2011.07.013) encontró evidencia positiva de las remesas sobre el desarrollo del sistema financiero. Otro estudio aplicado a países del sur de Asia ([Bangladesh, India, Nepal, Pakistán y Sri Lanka](https://link.springer.com/article/10.1007/s12232-020-00359-5)) en donde se encuentra un incremento del 1% de los flujos de remesas conlleva a un incremento de más del 1% en los créditos al sector privado.
+
+
+
 # La otra cara de la moneda
 
 Desfortunadamente no todo son buenas noticias. Existen principalmente tres efectos que pueden aumentar el riesgo macroeconómico y/o lastrar el crecimiento económico. Algunos de estos son: 
 
 1. Mayor dependencia de flujos externos, lo que incrementa la vulnerabilidad de la economía. 
 2. Mayor inflación. 
-3. Menor productividad y, por ende, menor crecimiento (como mínimo en el largo plazo).
+3. Desincentivos al mercado laboral.
 
 
 ## Una mayor dependencia es sinónimo de mayor riesgo macroeconómco
@@ -183,24 +199,25 @@ En segundo lugar, las remesas pueden tener un impacto sobre los precios. En este
 
 Esta situación reduce la competitividad externa del país. Una mayor inflación reduce el poder adquisitivo del córdoba frente a otras monedas. Este deterioro implicaría que para adquirir bienes y servicios del exterior los nicargüenses deban pagar con córdobas con menor poder adquisitivo frente a monedas cuyo poder adquisitivo se deteriore de forma más lenta.
 
-## Golpes a la productividad y al crecimiento en el largo plazo
+## Desincentivos al mercado laboral
 
-A pesar de lo anterior, quizás el efecto más importante se asocia a las posibles pérdidas de productividad de la economía. Si bien la dinámica actual de las remesas se puede asociar al buen desempeño del mercado laboral en EEUU (principal origen de las remesas), también podría ser consencuencia de un aumento de la migración. Esto último tiene efectos negativos sobre la productividad de la economía, principalmente en el largo plazo, debido a la *fuga de talentos* y/o la *reducción de mano de obra productiva*.
+Otro aspecto a destacar es que un ingreso sostenido de remesas puede ser un desincentivo para el mercado laboral local. En este sentido, las familias receptoras tienen menos incentivos para entrar o permanecer dentro de la fuerza laboral, lo que tiene el potencial de reducir la capacidad productiva del país. Adicionalmente, se suma el efecto de la migración, que por un lado impulsa la entrada de remesas y, por el otro, reduce la fuerza laboral del país.
 
-En ambos casos, las empresas pierden empleados productivos. Sus índices de rotación aumentan y se reduce la velocidad de contratación. Esta situación, que golpea especialmente a aquellas que son intensivas en mano de obra, resulta en presiones sobre sus flujos de caja, debido a la reducción del capital de trabajo por el pago de indemnizaciones. También tienen efectos negativos sobre sus ganancias, debido a que se debe provisionar un mayor pasivo laboral.
+En ambos casos, las empresas pierden empleados productivos. Esto impacta negativamente índices de rotación de personal (los cuales aumentan) y se reduce la velocidad de contratación. Esta situación, que afecta especialmente alas que son intensivas en mano de obra, resulta en presiones sobre sus flujos de caja, debido a la reducción del capital de trabajo por el pago de indemnizaciones. También tienen efectos negativos sobre sus ganancias, debido a que se debe provisionar un mayor pasivo laboral.
 
-En el largo plazo, esta condición genera escasez de ciertas profesiones u oficios (encareciendo estos servicios), implica una menor innovación y emprendedurismo; además, una adopción más lenta de tecnologías y una menor recaudación fiscal (asociada a las remuneraciones).
+En el largo plazo, ambos factores pueden generar escasez de ciertas profesiones u oficios (encareciendo estos servicios), reducen la innovación y el emprendedurismo, hay una adopción más lenta de tecnologías y una menor recaudación fiscal (asociada a las remuneraciones).
 
 
 # Comentarios finales 
 
 Nicaragua vive una situación excepcional con el acelerado ingreso de remesas. En un lapso de menos de 3 años, las remesas pasaron de representar el 10% del PIB al 17% del PIB, un incremento sin precedentes en la historia reciente de nuestro país. 
 
-La entrada acelerada de remesas le da a la economía una cara muy positiva, ya que promueve el crecimiento, la estabilidad del consumo agregado y niveles adecuados de divisas en la economía. 
+La entrada acelerada de remesas le da a la economía una cara muy positiva, ya que promueve el crecimiento, la estabilidad del consumo agregado y niveles adecuados de divisas en la economía. Adicionalmente, la entrada de remesas promueve el desarrollo del sistema financiero. 
 
-Sin embargo, existe una cara no tan bonita. La economía se expone a nuevos riesgos macroeconómicos, una mayor exposición a choques externos, pérdidas de competitividad y, en general, una menor productividad. 
+Sin embargo, está la otra cara. La economía se expone a nuevos riesgos macroeconómicos, una mayor exposición a choques externos, pérdidas de competitividad y, en general, una posiblemente menor fuerza productiva. 
 
-Es por lo tanto de gran importancia velar por la formulación de medidas económicas que mejoren la calidad del gasto de las remesas. Es decir, medidas que promuevan su inversión y no el consumo total de estos recursos. Esto permitiría mitigar los efectos negativos de esta nueva realidad económica.
+Es por lo tanto de gran importancia velar por la formulación de medidas económicas que permitan potenciar los beneficios de las remesas. Incentivar la bancarización de las familias receptoras, y el acceso de éstas a productos financieros, además de ser una oportunidad de negocios a la banca, provee mecanismos para fortalecer la economía por medio del desarrollo del sistema financiero. 
+
 
 
 
