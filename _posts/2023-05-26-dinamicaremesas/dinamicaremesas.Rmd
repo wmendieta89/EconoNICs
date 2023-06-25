@@ -1,7 +1,7 @@
 ---
-title: "Dinámica reciente de las remesas familiares en Nicaragua"
+title: "El desempeño excepcional de las remesas"
 description: |
-  Respecto al desempeño reciente de las remesas y los efectos económicos asociados.
+  Respecto al crecimiento de las remesas y sus posibles consecuencias económicas.
 author:
   - name: William Mendieta A.
     url: https://econonics.netlify.app/
@@ -24,7 +24,7 @@ source(paste0(ruta, "analisis_remesas.R"))
 
 Hola a todos! Bienvenidos a EconoNICs.
 
-En este post quisiera discutir un fenómeno de alta importancia para la economía de nuestro país: el rápido incremento de las remesas familiares. Principalmente quisiera destacar que, si bien existen múltiples beneficios a esta alza tan importante, también hay riesgos macroeconómicos a los que el país se expone con  esta situación.
+En este post quisiera discutir un fenómeno de alta importancia para la economía de nuestro país: el rápido incremento de las remesas familiares. Principalmente quisiera destacar que, si bien existen múltiples beneficios a esta alza tan importante, también hay riesgos macroeconómicos a los que el país se expone.
 
 Sin más preámbulo, empecemos la discusión.
 
@@ -73,6 +73,7 @@ Esta situación sin lugar a dudas tiene múltiples beneficios para nuestro país
 1. Un mayor consumo agregado y mayor crecimiento en el corto plazo. 
 2. Una mayor estabilidad del consumo y la demanda agregada de la economía.
 3. Una mayor oferta de divisas, que promueve la estabilidad del régimen cambiario.
+4. Un mayor desarrollo y profundización del sistema financiero.
 
 ## Impulsos al consumo y al crecimiento
 
@@ -124,9 +125,7 @@ Para sustentar más este argumento, basta con que verifiqués que  los flujos de
 
 ## Reducción de la volatilidad del ingreso y del consumo agregado
 
-En segundo lugar, las remesas tienen un segundo efecto sobre la actividad económica que es de alta relevancia. De acuerdo a múltiples estudios las remesas reducen la volatilidad de variables macroeconómicas importantes como el producto o el consumo.
-
-En la siguiente tabla pueden ver algunos de estos estudios con un breve resumen de sus principales resultados:
+En segundo lugar, según múltiples estudios las remesas reducen la volatilidad de variables macroeconómicas como el producto o el consumo. En la siguiente tabla pueden ver algunos de estos estudios con un breve resumen de sus principales resultados:
 
 ```{r}
 readxl::read_xlsx(paste0(ruta,"remittances_output_volatility.xlsx")) %>%
@@ -170,17 +169,16 @@ En el gráfico anterior observamos que la brecha cambiaria en los últimos dos a
 
 Evidentemente, hay otros factores que pueden incidir en la menor brecha cambiaria, como por ejemplo la [reducción de las importaciones](https://www.bcn.gob.ni/sites/default/files/documentos/Informe%20de%20Comercio%20Exterior%20al%20I%20trimestre%202023.pdf), las que al primer trimestre de 2023 ha disminuido 7.9% respecto al año pasado. Esta situación reduce la demanda de divisas de la economía, propiciando también una menor brecha cambiaria.
 
-Ambos efectos podrían ser los principales responsables de la acumulación de reservas internacionales del BCN. Al 30 de abril las reservas internacionales registran un saldo de [US$ 5,401.6 millones](https://www.bcn.gob.ni/IRR/graficos/reservas.php). Para poner en perspectiva este número, desde el año 2020 hasta el presente, las RIB del BCN se han más que duplicado, creciendo 168% (saldo de RIB en 2020 de US$ 3,211.9)
+Ambos efectos han contribuido a la alta acumulación de reservas internacionales del BCN. Al 31 de mayo las reservas internacionales registran un saldo de [US$ 4,974.4 millones](https://bcn.gob.ni/IRR/graficos/reservas.php). Para poner en perspectiva este número, desde el cierre de 2020 hasta el presente, las RIB del BCN han crecido 54.9% (saldo de RIB en 2020 de US$ 3,211.9)
 
-## Otros poteciales beneficios
+## Produndización financiera
 
 En cuarto lugar, quisiera destacar que las remesas promueven el desarrollo financiero en los países receptores. Existe evidencia que en países en desarrollo las remesas tienen un impacto positivo en el desarrollo del sistema financiero. Un estudio aplicado a [Bangladesh](https://doi.org/10.1016/J.ECONMOD.2011.07.013) encontró evidencia positiva de las remesas sobre el desarrollo del sistema financiero. Otro estudio aplicado a países del sur de Asia ([Bangladesh, India, Nepal, Pakistán y Sri Lanka](https://link.springer.com/article/10.1007/s12232-020-00359-5)) en donde se encuentra un incremento del 1% de los flujos de remesas conlleva a un incremento de más del 1% en los créditos al sector privado.
 
 
-
 # La otra cara de la moneda
 
-Desfortunadamente no todo son buenas noticias. Existen principalmente tres efectos que pueden aumentar el riesgo macroeconómico y/o lastrar el crecimiento económico. Algunos de estos son: 
+Desfortunadamente no todo son buenas noticias. Existen principalmente tres efectos que pueden aumentar el riesgo macroeconómico y/o lastrar el crecimiento económico en el largo plazo. Algunos de estos son: 
 
 1. Mayor dependencia de flujos externos, lo que incrementa la vulnerabilidad de la economía. 
 2. Mayor inflación. 
@@ -191,19 +189,19 @@ Desfortunadamente no todo son buenas noticias. Existen principalmente tres efect
 
 Un riesgo macroeconómico se puede definir como una condición en la economía que puede tener consecuencias negativas en el bienestar de las personas y/o en las operaciones de las empresas. En otras palabras, un riesgo macroeconómico no es un costo en sí mismo, sino una condición que hace que los choques que sufre la economía tengan mayores efectos negativos. Esto es consistente con la idea de que los riesgos macroeconómicos pueden ser causados por factores internos o externos y pueden tener un impacto significativo en la economía de un país en su conjunto.
 
-La entrada acelerada de las remesas que vive nuestro país puede aumentar el riesgo macroeconómico al crear dependencia a estos flujos. Esta mayor dependencia incrementa la vulnerabilidad de la economía a choques externos. Por ejemplo, seríamos más vulnerables a una recesión en EEUU, la cual ya no solo implicaría una menor demanda externa (menos exportaciones), sino que un menor empleo hispano repercutiría sobre la dinámica de las remesas y, con ello, un menor consumo agregado en nuestra economía. A mayor dependencia de las remesas, este mecanismo de transmisión se hace más fuerte.
+La entrada acelerada de las remesas que vive nuestro país puede aumentar el riesgo macroeconómico al crear dependencia a estos flujos. Esta mayor dependencia incrementa la vulnerabilidad de la economía a choques externos. Por ejemplo, seríamos más vulnerables a una recesión en EEUU, la cual ya no solo implicaría una menor demanda externa (menos exportaciones), sino que un menor empleo hispano repercutiría sobre la dinámica de las remesas y, con ello, un menor consumo agregado en nuestra economía. A mayor dependencia de las remesas, mayor es la fuerza de este mecanismo de transmisión.
 
 ## Presiones de demanda resultan en mayor inflación
 
-En segundo lugar, las remesas pueden tener un impacto sobre los precios. En este sentido, si los receptores de remesas tienen un mayor poder adquisitivo, esto puede resultar en una mayor demanda de bienes y servicios en la economía. Si todos los demás factores permanencen constantes, estas *presiones de demanda* pueden provocar alzas en los precios de la economía.
+En segundo lugar, las remesas pueden tener un impacto sobre los precios. Si los receptores de remesas tienen un mayor poder adquisitivo, esto puede resultar en una mayor demanda de bienes y servicios en la economía. Si todos los demás factores permanencen constantes, estas *presiones de demanda* pueden provocar alzas en los precios de la economía.
 
 Esta situación reduce la competitividad externa del país. Una mayor inflación reduce el poder adquisitivo del córdoba frente a otras monedas. Este deterioro implicaría que para adquirir bienes y servicios del exterior los nicargüenses deban pagar con córdobas con menor poder adquisitivo frente a monedas cuyo poder adquisitivo se deteriore de forma más lenta.
 
 ## Desincentivos al mercado laboral
 
-Otro aspecto a destacar es que un ingreso sostenido de remesas puede ser un desincentivo para el mercado laboral local. En este sentido, las familias receptoras tienen menos incentivos para entrar o permanecer dentro de la fuerza laboral, lo que tiene el potencial de reducir la capacidad productiva del país. Adicionalmente, se suma el efecto de la migración, que por un lado impulsa la entrada de remesas y, por el otro, reduce la fuerza laboral del país.
+Otro aspecto es que un ingreso sostenido de remesas puede crear un desincentivo para el mercado laboral. Las familias receptoras tienen menos incentivos para entrar o permanecer dentro de la fuerza laboral, lo que podría reducir la capacidad productiva del país. Adicionalmente, se puede sumar el efecto de la migración, que si bien por un lado impulsa la entrada de remesas, por el otro, implica una reducción de la fuerza laboral del país.
 
-En ambos casos, las empresas pierden empleados productivos. Esto impacta negativamente índices de rotación de personal (los cuales aumentan) y se reduce la velocidad de contratación. Esta situación, que afecta especialmente alas que son intensivas en mano de obra, resulta en presiones sobre sus flujos de caja, debido a la reducción del capital de trabajo por el pago de indemnizaciones. También tienen efectos negativos sobre sus ganancias, debido a que se debe provisionar un mayor pasivo laboral.
+En ambos casos, las empresas pierden empleados productivos. Esto impacta negativamente en índices como la rotación de personal (los cuales aumentan) o el aumento de los tiempos de contratación. Esta situación, que afecta especialmente alas que son intensivas en mano de obra, resulta en presiones sobre sus flujos de caja; debido a la reducción del capital de trabajo por el pago de indemnizaciones. También tienen efectos negativos sobre sus ganancias, debido a que deben provisionar un mayor pasivo laboral.
 
 En el largo plazo, ambos factores pueden generar escasez de ciertas profesiones u oficios (encareciendo estos servicios), reducen la innovación y el emprendedurismo, hay una adopción más lenta de tecnologías y una menor recaudación fiscal (asociada a las remuneraciones).
 
@@ -216,8 +214,12 @@ La entrada acelerada de remesas le da a la economía una cara muy positiva, ya q
 
 Sin embargo, está la otra cara. La economía se expone a nuevos riesgos macroeconómicos, una mayor exposición a choques externos, pérdidas de competitividad y, en general, una posiblemente menor fuerza productiva. 
 
-Es por lo tanto de gran importancia velar por la formulación de medidas económicas que permitan potenciar los beneficios de las remesas. Incentivar la bancarización de las familias receptoras, y el acceso de éstas a productos financieros, además de ser una oportunidad de negocios a la banca, provee mecanismos para fortalecer la economía por medio del desarrollo del sistema financiero. 
+Es por lo tanto de gran importancia velar por la formulación de medidas económicas que permitan potenciar los beneficios de las remesas. Incentivar la bancarización de las familias receptoras, y el acceso de éstas a productos financieros, además de ser una oportunidad de negocios a la banca, provee mecanismos para fortalecer la economía por medio del desarrollo del sistema financiero.
 
+
+# Comentarios al artículo
+
+Agradeceré mucho tus comentarios al artículo o bien sugerencias de temas para siguientes entradas. Podés enviarlos a través de este [link](https://forms.gle/DmzLrEjvpp28uzin6)
 
 
 
