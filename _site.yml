@@ -9,6 +9,8 @@ navbar:
       href: index.html
     - text: "Blog"
       href: blog.html
+    - text: "About"
+      href: about.html
   logo: 
     image: LOGO3.png
 output: distill::distill_article
